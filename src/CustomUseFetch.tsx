@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { getStarWars } from "./StarWarsService";
 import { PeopleListType } from "./types";
 
-interface ResultProps {
+export interface ResultProps {
   loading: boolean;
   data: PeopleListType;
 }
-export function CustomUseFetch() {
+export function CustomUseFetch(): ResultProps {
   const [result, setResult] = useState<ResultProps>({
     loading: true,
     data: { results: [] },
@@ -14,8 +14,6 @@ export function CustomUseFetch() {
 
   async function fetchData() {
     const data = await getStarWars();
-    console.log(data);
-
     setResult({ loading: false, data });
   }
 
